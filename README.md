@@ -33,9 +33,9 @@ steps:
 4. Run parse_PaperFieldsOfStudy.py
 5. Run parse_PaperAuthorAffiliations.py
 
-## test.py
-This step is optional. Ensure that the folder UnivProd exists in
-the home directory and is empty. Then, run the following set of commands to
+## Running the tests (validation)
+This step is optional. Ensure that the folder UnivProd exists in the home 
+directory and is empty. Then, run the following set of commands to
 test MAG:
 
 ```

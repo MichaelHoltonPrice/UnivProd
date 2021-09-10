@@ -1,0 +1,12 @@
+01	1		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1972	1972-06-05										0	4	4				2016-06-24
+02	2		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1974	1974-06-05										0	4	4				2016-06-24
+03	3		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1976	1976-06-05										0	4	4				2016-06-24
+04	4		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1978	1978-06-05										0	4	4				2016-06-24
+05	5		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1979	1979-06-05										0	4	4				2016-06-24
+06	6		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1980	1980-06-05										0	4	4				2016-06-24
+07	7		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1900	1900-06-05										0	4	4				2016-06-24
+08	8		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1990	1990-06-05										0	4	4				2016-06-24
+09	9		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1991	1991-06-05										0	4	4				2016-06-24
+10	10		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1992	1992-06-05										0	4	4				2016-06-24
+11	11		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1990	1990-06-05										0	4	4				2016-06-24
+12	12		Patent	synthesis of acrylamide from acrylonitrile	Synthesis of acrylamide from acrylonitrile		1991	1991-06-05										0	4	4				2016-06-24

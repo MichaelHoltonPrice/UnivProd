@@ -1,0 +1,7 @@
+01	1	night air	Field 1		0	102	101	576	2016-06-24
+02	2	night air	Field 2		0	102	101	576	2016-06-24
+03	3	night air	Field 3		0	102	101	576	2016-06-24
+04	4	night air	Field 4		0	102	101	576	2016-06-24
+101	5	night air	Field 5		1	102	101	576	2016-06-24
+102	6	night air	Field 6		1	102	101	576	2016-06-24
+103	7	night air	Field 7		1	102	101	576	2016-06-24

@@ -15,7 +15,7 @@ papers_file = os.path.join(mag_dir, mag_version, "mag", "Papers.txt")
 if not os.path.exists(papers_file):
     raise Exception('Papers.txt is not at the expected location')
 
-results_dir = os.path.join(os.path.expanduser("~"), "shimao_et_al_results")
+results_dir = os.path.join(os.path.expanduser("~"), "UnivDataResults")
 # Raise an exception if results_dir does not exist
 if not os.path.isdir(results_dir):
     raise Exception('results_dir does not exist at the expected location')
