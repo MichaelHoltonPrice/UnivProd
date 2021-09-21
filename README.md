@@ -264,3 +264,18 @@ adds MAG and chetty data to Delta to create a final, merged data frame, which
 is saved as results_dir/delta_with_MAG_and_chetty.csv.
 
 # Add the liberal arts dummy variable
+The final step is to append a column to the final dataframe with a dummy
+variable (binary indicator) of whether each institution is a liberal arts
+college. The source of the list of liberal arts colleges is the US News and
+World report rankings of liberal arts colleges, which has been collated by
+Andrew G. Reiter and posted [on his website](https://andyreiter.com/wp-content/uploads/2021/09/US-News-Rankings-Liberal-Arts-Colleges-Through-2022.xlsx).
+This file is also permanently archived on Zenodo with out other input files 
+(the only files not archived on Zenodo are the MAG files, which we do not have
+the permission to post there.)
+
+To append the liberal arts dummy run the following script, which creates a new
+file, delta_with_MAG_and_chetty_and_la.csv, in the results folder.
+
+```
+python .\add_liberal_arts_dummy.py
+```
