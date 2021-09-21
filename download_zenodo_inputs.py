@@ -39,6 +39,7 @@ files_to_download = ["CW2000.xlsx",
                      "CW2018.xlsx",
                      "delta_public_release_00_15.csv",
                      "delta_public_release_87_99.csv",
+                     "mag_matches_to_unitid_with_mag_title.xlsx",
                      "mrc_table11.csv",
                      "mrc_table3.csv",
                      "US-News-Rankings-Liberal-Arts-Colleges-Through-2022.xlsx"]
