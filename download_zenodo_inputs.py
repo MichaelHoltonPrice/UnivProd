@@ -13,7 +13,7 @@ dev = True
 if not dev:
     r = requests.get('https://zenodo.org/api/records/5510663')
 else:
-    r = requests.get('https://sandbox.zenodo.org/api/records/919415')
+    r = requests.get('https://sandbox.zenodo.org/api/records/921314')
 bucket_url = r.json()["links"]["bucket"]
 
 # Iterate over files that need downloading. Only download if the file has not
