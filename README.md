@@ -6,10 +6,14 @@ Price et al. 2021 (in review) -- UnivProd: A university production dataset
 
 The analysis is divided into three steps:
 
-1. Utilize the Microsoft Academic Graph (MAG) to create production arrays for
+1. Download input files from Zenodo
+2. Utilize the Microsoft Academic Graph (MAG) to create production arrays for
    research institutions
-2. Merge MAG, Delta, and Chetty data using a crosswalk
-3. Add Liberal Arts colleges as a dummy variable
+3. Merge MAG, Delta, and Chetty data using a crosswalk
+4. Add Liberal Arts colleges as a dummy variable
+
+Note: We are not allowed to deposit the MAG files on Zenodo. They are, however,
+available by request [here](https://docs.microsoft.com/en-us/academic-services/graph/get-started-setup-provisioning).
 
 This README assumes a terminal/command line and proficiency using it. To obtain
 the analysis the code, clone the git repository and change directory into it:
@@ -22,6 +26,17 @@ cd UnivProd
 The MAG schema can be found at this [link]
 (https://docs.microsoft.com/en-us/academic-services/graph/reference-data-schema)
 or in the file entity-relationship-diagram.png in this github repository. 
+
+# Downloading the input files from Zenodo
+To download the inputs files (aside from the MAG files) from Zenodo run the
+following script at the command line:
+
+```
+python .\download_zenodo_inputs.py
+```
+
+This will create a directory named /zenodo_inputs and download all necessary 
+non-MAG input files into the directory.
 
 # Creating production arrays using MAG
 The production arrays are created by running, in sequence, the following five
