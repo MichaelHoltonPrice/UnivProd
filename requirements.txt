@@ -5,4 +5,7 @@ numpy
 pyyaml
 datetime
 pandas
+requests
 openpyxl
+wget
+yaml
