@@ -284,7 +284,7 @@ variable (binary indicator) of whether each institution is a liberal arts
 college. The source of the list of liberal arts colleges is the US News and
 World report rankings of liberal arts colleges, which has been collated by
 Andrew G. Reiter and posted [on his website](https://andyreiter.com/wp-content/uploads/2021/09/US-News-Rankings-Liberal-Arts-Colleges-Through-2022.xlsx).
-This file is also permanently archived on Zenodo with out other input files 
+This file is also permanently archived on Zenodo with all other input files 
 (the only files not archived on Zenodo are the MAG files, which we do not have
 the permission to post there.)
 
