@@ -77,7 +77,7 @@ fos_id2index = dict()
 for k, fos_id in enumerate(top_level_ids):
     fos_id2index[fos_id] = k
 
-# For the 2021-02-05 version of MAG, there are 1458885638 entries in
+# For the 2021-02-15 version of MAG, there are 1458885638 entries in
 # PaperFieldsOfStudy.txt. Initialize the the progress bar, which is approximate
 # if a different version of MAG is used.
 num_pf = 10

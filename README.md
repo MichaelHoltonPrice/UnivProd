@@ -56,7 +56,9 @@ actual commands). The files beginning test\_ check that only needed
 modifications are present in the modified parsing scripts.
 
 ## parse_Papers.py
-Parse the MAG Papers.txt file with the following command:
+If necessary (e.g., if the tests in the preceding folder were run, delete
+the files in the results folder (if paper_hash remains, an error will be 
+thrown). Parse the MAG Papers.txt file with the following command:
 
 ```
 python .\parse_Papers.py
@@ -79,7 +81,7 @@ parse_Papers.py interacts with three directories: (a) the MAG directory, (b) a
 results directory, and (c) the active directory in which the script is running
 (the base directory of the git repository). The first two directories must be
 specified in the script by setting the variables mag_dir and results_dir. In
-addition, the MAG version, mag_version, (e.g., "2021-02-05") must be set. These
+addition, the MAG version, mag_version, (e.g., "2021-02-15") must be set. These
 three variables are stored in the active directory in the file path_dict.yaml
 so that they do not have to be set for subsequent scripts.
 
@@ -203,24 +205,25 @@ available in the documentation for the class, but we also summarize the process
 here.
 
 The necessary input data are located in two places, which are
-inputs to the initialization method of UnivDataManager: (1) univ_data_dir, 
-which contains new data needed for the merge and (2) results_dir, which 
-contains the results of previous processing to create the MAG production data. 
-In particular, the following input files are needed at the following locations:
+inputs to the initialization method of UnivDataManager: (1) data_dir, 
+which contains new data needed for the merge (in the do_crosswalk.py script,
+data_dir is set equal to /zenodo_inputs) and (2) results_dir, which contains
+the results of previous processing to create the MAG production data. In 
+particular, the following input files are needed at the following locations:
 
-1. /univ_data_dir/original_data/mag_id_matching/mag_matches_to_unitid_with_mag_title.xlsx
-2. /univ_data_dir/original_data/delta/delta_public_release_87_99.csv
-3. /univ_data_dir/original_data/delta/delta_public_release_00_15.csv
-4. /univ_data_dir/original_data/college_scorecard/CollegeScorecard_Raw_Data_01192021/Raw_Data_Files/Crosswalks/CW*
+1. /data_dir/mag_matches_to_unitid_with_mag_title.xlsx
+2. /data_dir/delta_public_release_87_99.csv
+3. /data_dir/delta_public_release_00_15.csv
+4. /data_dir/CW*
 5. /results_dir/years.json
 6. /results_dir/all_affil.json
 7. /results_dir/top_level_names.txt
 8. /results_dir/pap_prod_array.npz
 9. /results_dir/cit_prod_array.npz
-10. /univ_data_dir/original_data/chetty/mrc_table3.csv
-11. /univ_data_dir/original_data/chetty/mrc_table11.csv
+10. /data_dir/mrc_table3.csv
+11. /data_dir/mrc_table11.csv
 
-The college scorecard Crosswalk files are of the form CV2000.xlsx and span the 
+The college scorecard Crosswalk files are of the form CW2000.xlsx and span the 
 years 2000 through 2018.
 
 The initialization method of class UnivDataManager accomplishes the initial 
@@ -259,3 +262,5 @@ and creates a final set of ID triplets (IPEDS, MAG, and Chetty). The actual
 merge is accomplished by calling the method create_merged_production_data,
 adds MAG and chetty data to Delta to create a final, merged data frame, which
 is saved as results_dir/delta_with_MAG_and_chetty.csv.
+
+# Add the liberal arts dummy variable

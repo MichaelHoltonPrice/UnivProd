@@ -34,7 +34,7 @@ db_dir = os.path.join(results_dir, "paper_hash")
 if not os.path.isfile(os.path.join(db_dir, "data.mdb")):
     raise Exception('The file data.mdb does not exist in ' + db_dir)
 
-# For the 2021-02-05 version of MAG, there are 1744495483 entries in
+# For the 2021-02-15 version of MAG, there are 1744495483 entries in
 # PaperReferences.txt. Initialize the progress bar, which is approximate if a
 # different version of MAG is used.
 num_pr = 1744495483

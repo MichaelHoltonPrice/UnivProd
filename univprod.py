@@ -282,7 +282,8 @@ def load_prod_array(file_path):
 class UnivDataManager:
     """A class for managing and parsing the various university data sets
     Attributes:
-        univ_data_dir: The path to the University_Data_Central folder.
+
+        data_dir: The path to the input data directory (likely /zenodo_inputs)
         results_dir: The path to the results folder
         verbose: Should summary and status information be printed out?
         mag_mapping: A dataframe with information on mapping MAD IDs to IPEDS
@@ -316,18 +317,19 @@ class UnivDataManager:
             super_opeid associated with ope_id6 is acceptable.
     """
 
-    def __init__(self, univ_data_dir: str, results_dir: str, verbose=False):
+    def __init__(self, data_dir: str, results_dir: str, verbose=False):
         """Initialize the UnivDataManager class.
         Call a set of "helper" methods to initialize the class.
         Args:
-            data_dir: The path to the University_Data_Central folder
+            data_dir: The path to the input data directory (likely
+                /zenodo_inputs)
             results_dir: The path to the results directory with production data
             verbose: Should summary and status information be printed out?
-            :type univ_data_dir: str
+            :type data_dir: str
             :type results_dir: str
             :type verbose: bool
         """
-        self.univ_data_dir = univ_data_dir
+        self.data_dir = data_dir
         self.results_dir = results_dir
         self.verbose = verbose
 
@@ -393,9 +395,7 @@ class UnivDataManager:
         if self.verbose:
             print("Loading MAG ID matching data")
         file_name = \
-            os.path.join(self.univ_data_dir,
-                         "original_data",
-                         "mag_id_matching",
+            os.path.join(self.data_dir,
                          "mag_matches_to_unitid_with_mag_title.xlsx")
         self.mag_mapping = \
             pd.read_excel(file_name,
@@ -410,7 +410,7 @@ class UnivDataManager:
             print("Loading Delta data")
 
         # The Delta directory
-        delta_dir = os.path.join(self.univ_data_dir, "original_data", "delta")
+        delta_dir = self.data_dir
 
         # There are two Delta .csv files that are combined into a single
         # dataframe: (1) delta_public_release_87_99.csv covers academic years
@@ -438,10 +438,7 @@ class UnivDataManager:
         """Load crosswalk data from file into the dictionary self.cw[year]
         """
         # The Crosswalk directory
-        cw_dir = os.path.join(self.univ_data_dir, "original_data",
-                              "college_scorecard",
-                              "CollegeScorecard_Raw_Data_01192021",
-                              "Raw_Data_Files", "Crosswalks")
+        cw_dir = self.data_dir
         # Note: In IPEDS / Delta, the year 2014 corresponds to the academic
         #       year 2013-2014. The same convention is adopted here.
 
@@ -501,7 +498,7 @@ class UnivDataManager:
                          "cit_prod_array.npz"))
 
     def load_chetty_data(self):
-        """Load Chetty data using self.univ_data_dir
+        """Load Chetty data using self.data_dir
         Load the Chetty data, which consist of:
         (1) mrc_table3.csv / self.chetty_longitudinal
         (2) mrc_table11.csv / self.chetty_college_level
@@ -512,10 +509,8 @@ class UnivDataManager:
         if self.verbose:
             print("Loading Chetty data")
 
-        longi_file = os.path.join(self.univ_data_dir, "original_data",
-                                  "chetty", "mrc_table3.csv")
-        collg_file = os.path.join(self.univ_data_dir, "original_data",
-                                  "chetty", "mrc_table11.csv")
+        longi_file = os.path.join(self.data_dir, "mrc_table3.csv")
+        collg_file = os.path.join(self.data_dir, "mrc_table11.csv")
         self.chetty_college_level = read_csv(collg_file)
         self.chetty_longitudinal = read_csv(longi_file)
         # For faster subsequent matching, create a list with the Chetty college

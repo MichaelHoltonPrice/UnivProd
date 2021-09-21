@@ -9,7 +9,11 @@ if not os.path.isdir(zenodo_inputs_dir):
 
 # Get the base url (bucket_url) for downloading files form Zenodo for the
 # UnivProd DOI 5510663
-r = requests.get('https://zenodo.org/api/records/5510663')
+dev = True
+if not dev:
+    r = requests.get('https://zenodo.org/api/records/5510663')
+else:
+    r = requests.get('https://sandbox.zenodo.org/api/records/919415')
 bucket_url = r.json()["links"]["bucket"]
 
 # Iterate over files that need downloading. Only download if the file has not
@@ -36,7 +40,8 @@ files_to_download = ["CW2000.xlsx",
                      "delta_public_release_00_15.csv",
                      "delta_public_release_87_99.csv",
                      "mrc_table11.csv",
-                     "mrc_table3.csv"]
+                     "mrc_table3.csv",
+                     "US-News-Rankings-Liberal-Arts-Colleges-Through-2022.xlsx"]
 for file_name in files_to_download:
     print("--")
     print(file_name)

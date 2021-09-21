@@ -10,12 +10,12 @@ mag_dir = os.path.join(os.path.expanduser("~"), "localMAG")
 
 # The Papers.txt file should be located at /mag_dir/mag_version/mag/Papers.txt.
 # Raise an exception if it is not there.
-mag_version = "2021-02-05"
+mag_version = "2021-02-15"
 papers_file = os.path.join(mag_dir, mag_version, "mag", "Papers.txt")
 if not os.path.exists(papers_file):
     raise Exception('Papers.txt is not at the expected location')
 
-results_dir = os.path.join(os.path.expanduser("~"), "UnivDataResults")
+results_dir = os.path.join(os.path.expanduser("~"), "UnivProdResults")
 # Raise an exception if results_dir does not exist
 if not os.path.isdir(results_dir):
     raise Exception('results_dir does not exist at the expected location')
@@ -34,9 +34,9 @@ path_dict = {"mag_dir": mag_dir,
 with open('path_dict.yaml', 'w') as file:
     yaml.dump(path_dict, file)
 
-# For the 2021-02-05 version of MAG, there are 252109820 entries in Papers.txt.
-# Initialize the the progress bar, which is approximate if a different version
-# of MAG is used.
+# For the 2021-02-15 version of MAG, there are 252109820 entries in Papers.txt.
+# Initialize the progress bar, which is approximate if a different version of
+# MAG is used.
 num_papers = 252109820
 prog_bar = progressbar.ProgressBar(max_value=num_papers)
 

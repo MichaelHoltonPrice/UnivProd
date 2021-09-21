@@ -29,7 +29,7 @@ class TestParsePapers(unittest.TestCase):
         expected_lines.append("+++ test\n")
         expected_lines.append("@@ -80,7 +80,7 @@\n")
 #        expected_lines.append("@@ -91,7 +91,7 @@\n")
-        expected_lines.append(" # For the 2021-02-05 version of MAG, there are 1458885638 entries in\n")
+        expected_lines.append(" # For the 2021-02-15 version of MAG, there are 1458885638 entries in\n")
         expected_lines.append(" # PaperFieldsOfStudy.txt. Initialize the the progress bar, which is approximate\n")
         expected_lines.append(" # if a different version of MAG is used.\n")
         expected_lines.append("-num_pf = 1458885638\n")
