@@ -12,7 +12,7 @@ The steps needed to run the pipeline are:
 
 1. Obtain the source code by cloning the github repository
 2. Run tests
-3. Download input files from Zenodo
+3. Run download_zenodo_inputs.py
 4. Run parse_Papers.py
 5. Run parse_PaperReferences.py
 6. Run parse_PaperFieldsOfStudy.py
@@ -51,7 +51,7 @@ parsing scripts, for which none of the comments have been modified (only the
 actual commands). The files beginning test\_ check that only needed
 modifications are present in the modified parsing scripts.
 
-# 3. Download input files from Zenodo
+# 3. Run download_zenodo_inputs.py
 To download the inputs files (aside from the Microsoft Academic Graph (MAG) 
 files) from Zenodo run the following script at the command line:
 
