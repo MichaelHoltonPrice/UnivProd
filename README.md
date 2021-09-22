@@ -191,7 +191,7 @@ Affiliation B: 1/3 * 1/2 + 1/3 = 3/6
 Affiliation C:             1/3 = 2/6
 
 On top of the affiliation weighting, there is a compounding weighting for
-fields of study that multiply the affiliation weightings. For the FoS
+fields of study that multiplies the affiliation weightings. For the FoS
 weighting, each field of study associated with a paper contributes equally.
 For example, if a paper has three fields of study, each field is assigned one
 third of the weight. If a paper has no field of study, it is placed in a
