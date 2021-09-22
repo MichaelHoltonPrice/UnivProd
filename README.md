@@ -17,8 +17,8 @@ The steps needed to run the pipeline are:
 5. Run parse_PaperReferences.py
 6. Run parse_PaperFieldsOfStudy.py
 7. Run parse_PaperAuthorAffiliations.py
-8. Do the crosswalk to link IDs across datasets and create a merged dataframe
-9. Add the liberal arts dummy variable
+8. Run do_crosswalk.py to link IDs across datasets and create a merged dataframe
+9. Run add_liberal_arts_dummy.py
 
 Each step is described in detail below.
 
@@ -202,14 +202,14 @@ The main output of parse_PaperAuthorAffiliations.py is two arrays,
 pap_prod_array and cit_prod_array, which are saved as .csv files in the results
 directory. The first array is the production of papers by year, institution and
 FoS, whereas the second array is the production of citations (within the five
-year  window). These two arrays have the same dimensions,
-Ny x Na x 1 + num_fos, where Ny is the number of years, Na, is the number of
+year window). These two arrays have the same dimensions,
+Ny x Na x 1 + num_fos, where Ny is the number of years, Na is the number of
 affiliations, and num_fos is the number of fields of study. The first entry
 of the third dimension is for papers with no associated top level fields of
 study. A similar entry is not needed for affiliations because, as noted above,
 one of the institutions is the blank institution.
 
-# 8. Do the crosswalk
+# 8. Run do_crosswalk.py
 Run the following script to do the crosswalk, which links institutions by ID 
 across datasets and generates a merged dataframe:
 
@@ -282,7 +282,7 @@ merge is accomplished by calling the method create_merged_production_data,
 adds MAG and chetty data to Delta to create a final, merged data frame, which
 is saved as results_dir/delta_with_MAG_and_chetty.csv.
 
-# 9. Add the liberal arts dummy variable
+# 9.  Run add_liberal_arts_dummy.py
 The final step is to append a column to the final dataframe with a dummy
 variable (binary indicator) of whether each institution is a liberal arts
 college. The source of the list of liberal arts colleges is the US News and
