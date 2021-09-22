@@ -122,7 +122,7 @@ python .\parse_PaperReferences.py
 
 This script updates the hash values in the lmdb hash map to have, for each
 paper, the number of citations within a five year window. For the preceding
-example, the hash value after running parse_Papers.py is b"1991-14-6".
+example, the hash value after running parse_PaperReferences.py is b"1991-14-0".
 
 The PaperReferences.txt file is located at: mag_dir/mag_version/mag.
 
