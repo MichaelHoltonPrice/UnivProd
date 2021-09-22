@@ -188,7 +188,7 @@ Affiliation A: 1/3 * 1/2       = 1/6
 
 Affiliation B: 1/3 * 1/2 + 1/3 = 3/6
 
-Affiliation C:             1/3 = 2+/6
+Affiliation C:             1/3 = 2/6
 
 On top of the affiliation weighting, there is a compounding weighting for
 fields of study that multiply the affiliation weightings. For the FoS
