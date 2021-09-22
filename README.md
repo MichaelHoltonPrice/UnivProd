@@ -4,54 +4,35 @@ article:
 
 Price et al. 2021 (in review) -- UnivProd: A university production dataset
 
-The analysis is divided into three steps:
+This README assumes the use of a terminal/command line, though experienced
+users should find it straightforward to run the pipeline using an integrated 
+development environment (IDE) for python, such as PyCharm.
 
-1. Download input files from Zenodo
-2. Utilize the Microsoft Academic Graph (MAG) to create production arrays for
-   research institutions
-3. Merge MAG, Delta, and Chetty data using a crosswalk
-4. Add Liberal Arts colleges as a dummy variable
+The steps needed to run the pipeline are:
 
-Note: We are not allowed to deposit the MAG files on Zenodo. They are, however,
-available by request [here](https://docs.microsoft.com/en-us/academic-services/graph/get-started-setup-provisioning).
+1. Obtain the source code by cloning the github repository
+2. Run tests
+3. Download input files from Zenodo
+4. Run parse_Papers.py
+5. Run parse_PaperReferences.py
+6. Run parse_PaperFieldsOfStudy.py
+7. Run parse_PaperAuthorAffiliations.py
+8. Do the crosswalk to link IDs across datasets and create a merged dataframe
+9. Add the liberal arts dummy variable
 
-This README assumes a terminal/command line and proficiency using it. To obtain
-the analysis the code, clone the git repository and change directory into it:
+Each step is described in detail below.
 
+# 1. Obtain the source code
+To obtain the analysis the code, clone the git repository and change directory
+into it:
 ```
 git https://github.com/MichaelHoltonPrice/UnivProd
 cd UnivProd
 ```
 
-The MAG schema can be found at this [link]
-(https://docs.microsoft.com/en-us/academic-services/graph/reference-data-schema)
-or in the file entity-relationship-diagram.png in this github repository. 
-
-# Downloading the input files from Zenodo
-To download the inputs files (aside from the MAG files) from Zenodo run the
-following script at the command line:
-
-```
-python .\download_zenodo_inputs.py
-```
-
-This will create a directory named /zenodo_inputs and download all necessary 
-non-MAG input files into the directory.
-
-# Creating production arrays using MAG
-The production arrays are created by running, in sequence, the following five
-steps:
-
-1. Run tests
-2. Run parse_Papers.py
-3. Run parse_PaperReferences.py
-4. Run parse_PaperFieldsOfStudy.py
-5. Run parse_PaperAuthorAffiliations.py
-
-## Running the tests (validation)
+# 1. Run tests
 This step is optional. Ensure that the folder UnivProd exists in the home 
-directory and is empty. Then, run the following set of commands to
-test MAG:
+directory and is empty. Then, run the following set of commands:
 
 ```
 python .\unit_tests.py
@@ -70,7 +51,28 @@ parsing scripts, for which none of the comments have been modified (only the
 actual commands). The files beginning test\_ check that only needed
 modifications are present in the modified parsing scripts.
 
-## parse_Papers.py
+# 3. Download input files from Zenodo
+To download the inputs files (aside from the Microsoft Academic Graph (MAG) 
+files) from Zenodo run the following script at the command line:
+
+```
+python .\download_zenodo_inputs.py
+```
+
+This will create a directory named /zenodo_inputs and download all necessary 
+non-MAG input files into the directory. We are unable to put the MAG files on
+Zenodo due to restrictions on its use by Microsoft. They are, however, 
+available by request [here]
+(https://docs.microsoft.com/en-us/academic-services/graph/get-started-setup-provisioning).
+
+# 4. Run parse_Papers.py
+Steps 4 through 7 utilize Microsoft Academic Graph (MAG) data to create output
+measures by institution and year. Specifically, the output measures are
+publications and citations within five years (the five year window can be
+changed). The MAG schema can be found at this [link]
+(https://docs.microsoft.com/en-us/academic-services/graph/reference-data-schema)
+or in the file entity-relationship-diagram.png in this github repository. 
+
 If necessary (e.g., if the tests in the preceding folder were run, delete
 the files in the results folder (if paper_hash remains, an error will be 
 thrown). Parse the MAG Papers.txt file with the following command:
@@ -111,7 +113,7 @@ parse_Papers.py has been run, Papers.txt can be deleted and PaperReferences.txt
 can be copied to the directory prior to running the next script,
 parse_PaperReferences.py
 
-## parse_PaperReferences.py
+# 5. parse_PaperReferences.py
 Parse the MAG PaperReferences.txt file with the following command:
 
 ```
@@ -128,7 +130,7 @@ For this and subsequent parsing scripts, the path information written to
 path_dict.yaml by parse_Papers.txt is loaded from file to set mag_dir,
 results_dir, and mag_version.
 
-## parse_PaperFieldsOfStudy.py
+# 6. parse_PaperFieldsOfStudy.py
 Parse the MAG PaperFieldsOfStudy.txt file with the following command:
 
 ```
@@ -154,7 +156,7 @@ an example. If fos_byte_string = b"06", then the bit representation is 01100...
 For further details see the documentation for fos_byte_string2list in
 univprod.py
 
-## parse_PaperAuthorAffiliations.py
+# 7. parse_PaperAuthorAffiliations.py
 Parse the MAG PaperAuthorAffiliations.txt file with the following command:
 
 ```
@@ -207,7 +209,9 @@ of the third dimension is for papers with no associated top level fields of
 study. A similar entry is not needed for affiliations because, as noted above,
 one of the institutions is the blank institution.
 
-# Do the crosswalk
+# 8. Do the crosswalk
+Run the following script to do the crosswalk, which links institutions by ID 
+across datasets and generates a merged dataframe:
 
 ```
 python .\do_crosswalk.py
@@ -278,15 +282,16 @@ merge is accomplished by calling the method create_merged_production_data,
 adds MAG and chetty data to Delta to create a final, merged data frame, which
 is saved as results_dir/delta_with_MAG_and_chetty.csv.
 
-# Add the liberal arts dummy variable
+# 9. Add the liberal arts dummy variable
 The final step is to append a column to the final dataframe with a dummy
 variable (binary indicator) of whether each institution is a liberal arts
 college. The source of the list of liberal arts colleges is the US News and
 World report rankings of liberal arts colleges, which has been collated by
-Andrew G. Reiter and posted [on his website](https://andyreiter.com/wp-content/uploads/2021/09/US-News-Rankings-Liberal-Arts-Colleges-Through-2022.xlsx).
+Andrew G. Reiter and posted [on his website]
+(https://andyreiter.com/wp-content/uploads/2021/09/US-News-Rankings-Liberal-Arts-Colleges-Through-2022.xlsx).
 This file is also permanently archived on Zenodo with all other input files 
-(the only files not archived on Zenodo are the MAG files, which we do not have
-the permission to post there.)
+(the only files not archived on Zenodo are the MAG files, since Microsoft
+restricts their use).
 
 To append the liberal arts dummy run the following script, which creates a new
 file, delta_with_MAG_and_chetty_and_la.csv, in the results folder.
