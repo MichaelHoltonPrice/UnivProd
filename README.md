@@ -139,7 +139,7 @@ python .\parse_PaperFieldsOfStudy.py
 
 This script updates the hash values in the lmdb hash map to have, for each
 paper, the FoS record. For the preceding example, the hash value after running
-parse_PaperFieldsOfStudy.py is b"1991-14-0".
+parse_PaperFieldsOfStudy.py is b"1991-14-6".
 
 Two files are needed for this step, FieldsOfStudy.txt and
 PaperFieldsOfStudy.txt, both located at: mag_dir/mag_version/advanced. The
